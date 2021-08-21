@@ -1,0 +1,1 @@
+add_test_cma(debug_allocator debug_allocator.cpp)
