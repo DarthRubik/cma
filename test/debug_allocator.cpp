@@ -67,4 +67,16 @@ int main()
         traits::deallocate(a, c, 100);
     }
     check_fail_cb(false);
+
+    // Free with wrong alloc
+    {
+        using alloc = alloc_t<>;
+        using traits = std::allocator_traits<alloc>;
+        alloc a;
+        alloc b;
+
+        char* c = traits::allocate(a, 100);
+        traits::deallocate(b, c, 100);
+    }
+    check_fail_cb(true);
 }
