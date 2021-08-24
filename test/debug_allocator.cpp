@@ -28,7 +28,8 @@ int main()
     {
         using alloc = alloc_t<>;
         using traits = std::allocator_traits<alloc>;
-        alloc a;
+        using rebind = traits::rebind_alloc<char>;
+        rebind a;
 
         traits::allocate(a, 100);
     }

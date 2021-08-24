@@ -44,6 +44,12 @@ namespace cma
             return info->id;
         }
 
+        template<typename U>
+        struct rebind
+        {
+            using other = debug_allocator<U, POCC, POCCA, POCMA, POCS, fail_cb>;
+        };
+
         debug_allocator() : debug_allocator("default") {}
         debug_allocator(std::string id)
             : info(new dai{std::move(id)}) {}
